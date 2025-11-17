@@ -15,6 +15,12 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
+app.get("/", async (req, res) => {
+  res.set({ "Access-Control-Allow-Origin": "*" });
+  //CORSのアクセスコントロールをヘッダーに追加
+  res.send("つながりました");
+});
+
 //原文表示
 app.get("/api/originaltext", async (req, res) => {
   res.set({ "Access-Control-Allow-Origin": "*" });
@@ -23,12 +29,13 @@ app.get("/api/originaltext", async (req, res) => {
   res.json(data);
 });
 
-//コメント保存と表示
-// app.post("api/originaltext", async (req, res) => {
+// //コメント投稿
+// app.post("/api/originaltext", async (req, res) => {
+//   res.set({ "Access-Control-Allow-Origin": "*" });
 //   const commentToBeAdded = req.body;
 //   console.log(commentToBeAdded);
-
 // });
+// // });
 
 // //ロードしたらDBのテキストが出る。DBはKNEXのインスタンス
 // app.get("/api/originaltext", async (req, res) => {

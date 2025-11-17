@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import Comment from "./Comment";
 
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Image from "react-bootstrap/Image";
-import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
+// import Container from "react-bootstrap/Container";
+// import Image from "react-bootstrap/Image";
+// import Row from "react-bootstrap/Row";
 
 const OriginalText = () => {
   const [data, setData] = useState(undefined);
@@ -22,23 +22,30 @@ const OriginalText = () => {
     }
     fetchData();
   }
-  return (
+
+  function select() {
+    setSelected(true);
+  }
+
+  return !clicked ? (
     <>
-      {!clicked ? (
-        <>
-          <h1>Welcome to DRC</h1>
-          <h3> - Select book and start reading! -</h3>
-          <button className="button1" onClick={displayText}>
-            日本書紀
-          </button>
-          <button className="button2">万葉集</button>
-        </>
-      ) : (
-        <>
-          <h2>{JSON.stringify(data[0]["title"])}</h2>
-          <p onClick={<Comment />}>{JSON.stringify(data[0]["text"])}</p>
-        </>
-      )}
+      <h1>Welcome to DRC</h1>
+      <h3> - Select book and start reading! -</h3>
+      <button className="button1" onClick={displayText}>
+        日本書紀
+      </button>
+      <button className="button2">万葉集</button>
+    </>
+  ) : !selected ? (
+    <>
+      <h2>{JSON.stringify(data[0]["title"])}</h2>
+      <p onClick={select}>{JSON.stringify(data[0]["text"])}</p>
+    </>
+  ) : (
+    <>
+      <h2>{JSON.stringify(data[0]["title"])}</h2>
+      <p onClick={select}>{JSON.stringify(data[0]["text"])}</p>
+      <Comment />
     </>
   );
 };

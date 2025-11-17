@@ -1,23 +1,32 @@
 import React from "react";
 import { useState } from "react";
-import Top from "./OriginalText";
+// import { comment } from "../../back/instanceKnexForExpress";
 
 function Comment() {
-  const [comment, setComment] = useState("");
+  const [text, setComment] = useState("");
+  const [postClicked, setPostClicked] = useState(false);
 
-  function postComment(event) {
+  function holdText(event) {
     setComment(event.target.value);
+    console.log("こちら", event.target.value);
   }
 
-  // const [isSent, setSend] = useState(false);
-  // function submit() {
-  //   setSend(isSent);
-  // }
+  function postComment() {
+    console.log(text);
+    const postRequest = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ comment: text }),
+    };
+    setPostClicked(true);
+    fetch("http://localhost:3000/api/originaltext", postRequest);
+  }
 
   return (
     <>
-      <input className="comment" type="text" />
-      <button>この内容でコメント</button>
+      <input onChange={holdText} className="comment" type="text" />
+      <button onClick={postComment}>POST</button>
+      <button>DELETE</button>
       <input className="upload__button" type="file"></input>
     </>
   );
