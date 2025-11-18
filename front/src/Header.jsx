@@ -11,8 +11,8 @@ function Header() {
             <Navbar.Brand href="#home">読書マーカー</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link href="home">Home</Nav.Link>
-              <Nav.Link href="features">日本書紀</Nav.Link>
-              <Nav.Link href="pricing">古事記</Nav.Link>
+              <Nav.Link href="Originaltext">日本書紀</Nav.Link>
+              <Nav.Link href="kojiki">古事記</Nav.Link>
             </Nav>
           </Container>
         </Navbar>

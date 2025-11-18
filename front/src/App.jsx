@@ -5,7 +5,6 @@ import "./App.css";
 import OriginalText from "./OriginalText";
 import Header from "./Header";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Comment from "./Comment";
 
 //こちらにコンポネントを格納しアプリ化しMAINに渡す。MAINはなぜ必要？あとで考えよう
 function App() {
@@ -14,7 +13,9 @@ function App() {
   return (
     <>
       <Header />
-      <OriginalText />
+      <div className="grid">
+        <OriginalText />
+      </div>
     </>
   );
 }

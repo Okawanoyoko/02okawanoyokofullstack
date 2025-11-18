@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 const db = require("./instanceKnexForExpress"); //KNEXインスタンスをひっぱってきた
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
 //memo: REACT側のPUBLICは素材置き場。EXPRESSでつくったPUBLICは、配信用の完成品置き場。
 //DISTがここにくる？？ REACTのコマンドでコピペの指定をしてみた。
 
@@ -25,19 +25,27 @@ app.get("/", async (req, res) => {
 
 //原文表示
 app.get("/api/originaltext", async (req, res) => {
-  res.setHeader("Content-Type", "application/json");
-  res.set({ "Access-Control-Allow-Origin": "*" });
+  // res.setHeader("Content-Type", "application/json");
+  // res.set({ "Access-Control-Allow-Origin": "*" });
   //CORSのアクセスコントロールをヘッダーに追加
   const data = await db("originaltext").select("*");
-  res.json(data);
+  res.status(200).json(data);
+});
+
+//コメント表示
+app.get("/api/comment/", async (req, res) => {
+  // res.set({ "Access-Control-Allow-Origin": "*" });
+  const data2 = await db("comment").select("*");
+  console.log("テーブルからコメントひっぱり", data2);
+  res.status(200).json(data2);
 });
 
 //コメント投稿
 app.post("/api/comment", async (req, res) => {
-  res.set({ "Access-Control-Allow-Origin": "*" });
+  // res.set({ "Access-Control-Allow-Origin": "*" });
   const comment = req.body.comment;
   console.log(comment);
-  const insert = await db("comment").insert({ comment: comment });
+  await db("comment").insert({ comment: comment });
   res.status(200).end();
 });
 
