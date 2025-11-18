@@ -14,7 +14,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+/////////////////////////////////////////////////////
 
+//3000サーバ立ち上げ　ルートページ
 app.get("/", async (req, res) => {
   res.set({ "Access-Control-Allow-Origin": "*" });
   //CORSのアクセスコントロールをヘッダーに追加
@@ -23,19 +25,46 @@ app.get("/", async (req, res) => {
 
 //原文表示
 app.get("/api/originaltext", async (req, res) => {
+  res.setHeader("Content-Type", "application/json");
   res.set({ "Access-Control-Allow-Origin": "*" });
   //CORSのアクセスコントロールをヘッダーに追加
   const data = await db("originaltext").select("*");
   res.json(data);
 });
 
-// //コメント投稿
-// app.post("/api/originaltext", async (req, res) => {
-//   res.set({ "Access-Control-Allow-Origin": "*" });
-//   const commentToBeAdded = req.body;
-//   console.log(commentToBeAdded);
+//コメント投稿
+app.post("/api/comment", async (req, res) => {
+  res.set({ "Access-Control-Allow-Origin": "*" });
+  const comment = req.body.comment;
+  console.log(comment);
+  const insert = await db("comment").insert({ comment: comment });
+  res.status(200).end();
+});
+
+// try {
+//   // Knexを使用してデータベースに挿入
+//   const [id] = await knex('items').insert({
+//     name,
+//     description,
+//     price
+//   }).returning('id'); // 挿入されたレコードのIDを返す (PostgreSQLの場合)
+
+//   res.status(201).json({
+//     success: true,
+//     message: 'Item created successfully',
+//     id: id
+//   });
+
+// } catch (err) {
+//   console.error(err);
+//   res.status(500).json({
+//     success: false,
+//     message: 'Error creating item',
+//     error: err.message
+//   });
+// }
+
 // });
-// // });
 
 // //ロードしたらDBのテキストが出る。DBはKNEXのインスタンス
 // app.get("/api/originaltext", async (req, res) => {

@@ -13,13 +13,17 @@ function Comment() {
 
   function postComment() {
     console.log(text);
+    console.log(typeof text); //string
     const postRequest = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ comment: text }),
+      body: { comment: text },
     };
     setPostClicked(true);
-    fetch("http://localhost:3000/api/originaltext", postRequest);
+    fetch("/api/comment", postRequest).then((response) => {
+      console.log("サーバーからのレスポンス:", response.data);
+      postRequest();
+    });
   }
 
   return (
