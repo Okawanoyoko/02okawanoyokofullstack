@@ -49,6 +49,14 @@ app.post("/api/comment", async (req, res) => {
   res.status(200).end();
 });
 
+app.delete("/api/delete", async (req, res) => {
+  // res.set({ "Access-Control-Allow-Origin": "*" });
+  const commentToDelete = req.body.comment;
+  console.log(commentToDelete);
+  await db("comment").where("comment", commentToDelete).delete();
+  res.status(200).send("できたよ");
+});
+
 // try {
 //   // Knexを使用してデータベースに挿入
 //   const [id] = await knex('items').insert({

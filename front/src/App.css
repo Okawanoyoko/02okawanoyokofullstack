@@ -1,5 +1,5 @@
 #root {
-  max-width: 1000px;
+  max-width: fit-content;
   margin: 0 auto;
   padding: 2rem;
   text-align: left;
@@ -45,6 +45,8 @@
   margin: 20px;
   background-color: deeppink;
   color: white;
+  width: 160px;
+  height: 70px;
   /* box-shadow: inset; */
 }
 
@@ -52,14 +54,17 @@
   margin: 20px;
   background-color: rgb(46, 210, 90);
   color: white;
+  width: 160px;
+  height: 70px;
   /* box-shadow: inset; */
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 5fr 1fr;
+  grid-template-columns: 200px 200px 200px;
+  min-width: 200px;
   gap: 16px;
-  margin-top: 70px;
+  margin-top: 10px;
   width: 100%;
   text-align: center;
 }
@@ -68,12 +73,39 @@
   display: block;
 }
 
-h2 {
-  margin: 20px;
+.trash {
+  font-size: 8px;
+  background-color: aliceblue;
+}
+
+.comment {
+  width: 200px;
+  height: 160px;
+}
+
+.postButton {
+  margin: 5px;
+  background-color: black;
+  color: aliceblue;
 }
 
 .input {
-  width: 200px;
-  height: 100px;
-  overflow-wrap: anywhere;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
+/* 
+h2 {
+  margin: 20px;
+} */
+
+/* .input {
+  width: 150px;
+  height: 150px;
+  /* overflow-wrap: anywhere; */
+/* } */
+
+/* .commentList {
+  width: 200px;
+  height: 150px;
+} */

@@ -8,11 +8,11 @@ function Header() {
       <div className="header">
         <Navbar bg="dark" data-bs-theme="dark">
           <Container>
-            <Navbar.Brand href="#home">読書マーカー</Navbar.Brand>
+            <Navbar.Brand href="#home">My annotation</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link href="home">Home</Nav.Link>
-              <Nav.Link href="Originaltext">日本書紀</Nav.Link>
-              <Nav.Link href="kojiki">古事記</Nav.Link>
+              <Nav.Link href="Originaltext">Songs</Nav.Link>
+              <Nav.Link href="kojiki">Buy</Nav.Link>
             </Nav>
           </Container>
         </Navbar>

@@ -3,7 +3,7 @@ import "./App.css";
 import { useState } from "react";
 
 //入力テキストのフック、およひポスト機能のみ//
-function PostComment({ autoFetchComment }) {
+function PostComment() {
   const [text, setComment] = useState("");
 
   //入力テキストのフック
@@ -18,17 +18,19 @@ function PostComment({ autoFetchComment }) {
       body: JSON.stringify({ comment: text }),
     };
     await fetch("/api/comment", postRequest);
-    autoFetchComment();
+    // autoFetchComment();
     setComment("");
   }
 
   return (
     <>
-      <div className="top">
-        <input onChange={holdText} className="comment" type="text" />
-        <button onClick={post}>POST</button>
+      <div className>
+        <input className="comment" onChange={holdText} type="text" />
+        <button className="postButton" onClick={post}>
+          POST
+        </button>
         {/* <button>DELETE</button> */}
-        <input className="upload__button" type="file"></input>
+        {/* <input className="upload__button" type="file"></input> */}
       </div>
     </>
   );

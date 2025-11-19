@@ -42,41 +42,33 @@ const OriginalText = () => {
 
   return !clicked ? (
     <>
-      {" "}
-      <div className="top">
-        <h1>Welcome to DRC</h1>
-        <h3> - Select book and start reading! -</h3>
+      <div className={clicked ? "top" : "grid"}>
+        <h1>My annotation</h1>
         <button className="button1" onClick={displayText}>
-          日本書紀
+          Kume Song
         </button>
-        <button className="button2">万葉集</button>
-      </div>
-    </>
-  ) : !selected ? (
-    <>
-      <h2 style={{ position: "fixed", top: 100 }}>{data[0]["title"]}</h2>
-      <div className="grid">
-        <div>
-          <p onClick={select}>{data[0]["text"]}</p>
-        </div>
-        <div>
-          <DisplayComment comments={comments} />
-        </div>
+        <button className="button2">Don't look back in anger</button>
+        <button className="button1">APT</button>
+        <button className="button2">Subaru</button>
       </div>
     </>
   ) : (
     <>
-      <h2 style={{ position: "fixed" }}>{data[0]["title"]}</h2>
+      <h2 style={{ position: "fixed", top: 100, color: "pink" }}>
+        {data[0]["title"]}
+      </h2>
       <div className="grid">
-        <div>
-          <p onClick={select}>{data[0]["text"]}</p>{" "}
+        <div style={{ fontSize: 26 }} onClick={select}>
+          {data[0]["text"]}
         </div>
         <div>
           <DisplayComment comments={comments} />
         </div>
-      </div>
-      <div className="input">
-        <PostComment AutoFetchComment={autoFetchComment} />
+        {selected && (
+          <div>
+            <PostComment AutoFetchComment={autoFetchComment} />
+          </div>
+        )}
       </div>
     </>
   );

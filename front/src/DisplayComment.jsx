@@ -4,16 +4,37 @@ import { Card } from "react-bootstrap";
 import "./App.css";
 
 function DisplayComment({ comments }) {
+  async function deleteComment(theComment) {
+    const deleteRequest = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ comment: theComment }),
+    };
+    await fetch("/api/delete", deleteRequest);
+    await fetch("/api/get/comment");
+  }
+
   return (
-    <div>
+    <>
       {comments.map((eachObj) => (
-        <Card key={eachObj.id} className="mb-3" style={{ width: "18rem" }}>
+        <Card key={eachObj.id} className="mb-7" style={{ width: "12rem" }}>
           <Card.Body>
-            <Card.Text>{eachObj.comment}</Card.Text>
+            <Card.Text style={{ fontSize: 11 }}>
+              {eachObj.comment}
+
+              <button
+                style={{ fontSize: 8 }}
+                className="trash"
+                onClick={() => deleteComment(eachObj.comment)}
+              >
+                🗑️
+              </button>
+              <footer style={{ fontSize: 8 }}> {eachObj.time}</footer>
+            </Card.Text>
           </Card.Body>
         </Card>
       ))}
-    </div>
+    </>
   );
 }
 export default DisplayComment;
