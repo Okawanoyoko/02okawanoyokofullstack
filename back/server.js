@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 const db = require("./instanceKnexForExpress"); //KNEXインスタンスをひっぱってきた
 
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
 //memo: REACT側のPUBLICは素材置き場。EXPRESSでつくったPUBLICは、配信用の完成品置き場。
 //DISTがここにくる？？ REACTのコマンドでコピペの指定をしてみた。
 
@@ -18,7 +18,7 @@ app.listen(PORT, () => {
 
 //3000サーバ立ち上げ　ルートページ
 app.get("/", async (req, res) => {
-  res.set({ "Access-Control-Allow-Origin": "*" });
+  // res.set({ "Access-Control-Allow-Origin": "*" });
   //CORSのアクセスコントロールをヘッダーに追加
   res.send("つながりました");
 });
@@ -54,7 +54,7 @@ app.delete("/api/delete", async (req, res) => {
   const commentToDelete = req.body.comment;
   console.log(commentToDelete);
   await db("comment").where("comment", commentToDelete).delete();
-  res.status(200).send("できたよ");
+  res.status(200).end();
 });
 
 // try {
