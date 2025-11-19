@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm install && vite build && cp -r ./front/dist/* ../back/public",
-    "start": "node ./back/server.js"
+    "build": "> npm install && cd front && npm install && vite build && cp -r dist/* ../back/public",
+    "start": "cd back && npm install && node server.js"
   },
   "repository": {
     "type": "git",
