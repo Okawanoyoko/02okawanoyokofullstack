@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "vite build && cp -r ./front/dist/* ../back/public",
+    "build": "npm install && vite build && cp -r ./front/dist/* ../back/public",
     "start": "node ./back/server.js"
   },
   "repository": {
