@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd front && npm install && npm run build && cp -r dist/* ../back/public",
+    "build": "mkdir back/public && cd front && npm install && npm run build && cp -r dist/* ./back/public",
     "start": "cd back && npm install && node server.js"
   },
   "repository": {
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Okawanoyoko/02okawanoyokofullstack/issues"
   },
-  "homepage": "https://github.com/Okawanoyoko/02okawanoyokofullstack#readme"
+  "homepage": "https://github.com/Okawanoyoko/02okawanoyokofullstack#readme",
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.1"
+  }
 }
