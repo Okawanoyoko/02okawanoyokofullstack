@@ -12,7 +12,7 @@ const textsJson = JSON.parse(jsonString);
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
   await knex("originaltext").del();
-  await knex("originaltext").insert;
+  await knex("originaltext").insert(jsonString);
   // ({
   //   id: textsJson.id,
   //   title: textsJson.title,
