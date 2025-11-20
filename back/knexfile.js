@@ -22,7 +22,9 @@ module.exports = {
     client: "postgres",
     connection: {
       database:
-       "mydatabase_4755",
+        "postgresql://okawa:4XAuGtnKnCden1NfSMBKPASADNLoKtd8@dpg-d4emkivpm1nc738ua1v0-a/mydatabase_4755",
+    },
+
     migrations: {
       directory: "./data/migrations",
     },

@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express");
 const app = express();
-//DEPLOYで変数PORTに、それがなければ３０００につなぐサーバのポート。REACTのポートは別
+//DEPLOYで変数PORT5432に、それがなければ３０００につなぐサーバのポート。REACTのポートは別
 const PORT = process.env.PORT || 3000;
 const db = require("./instanceKnexForExpress"); //KNEXインスタンスをひっぱってきた
 const productionDB = require("./instanceKnexForExpress");
@@ -30,7 +30,7 @@ app.get("/api/originaltext", async (req, res) => {
   // res.set({ "Access-Control-Allow-Origin": "*" });
   //CORSのアクセスコントロールをヘッダーに追加
   const data = await db("originaltext").select("*");
-  res.status(200).json(data);
+  res.status(200).send(data);
 });
 
 //コメント表示
