@@ -3,11 +3,7 @@
  * @returns { Promise<void> }
  */
 //原文を持ってくる処理
-const fs = require("fs");
-const filePath = "./data/originaltext.json";
-const jsonString = fs.readFileSync(filePath, "utf8");
-const textsJson = JSON.parse(jsonString);
-
+const original = require("../data/originaltext.json");
 //マイグレで作ったテーブルに豆乳
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
