@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd back && db migrate:latest && db seed:run && cd ../front && npm install && npm run build && cp -r dist/* ../back/public/",
+    "build": "cd back && knex migrate:latest && knex seed:run && cd front && npm install && npm run build && cp -r dist/* ../back/public/",
     "start": "cd back && npm install && node server.js"
   },
   "repository": {
