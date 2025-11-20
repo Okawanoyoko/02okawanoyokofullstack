@@ -18,19 +18,19 @@ module.exports = {
     },
   },
 
-  // production: {
-  //   client: "pg",
-  //   connection: {
-  //     database: process.env.DATABASE_URL,
-  //   },
+  production: {
+    client: "pg",
+    connection: {
+      database: process.env.DATABASE_URL,
+    },
 
-  //   migrations: {
-  //     directory: "./data/migrations",
-  //   },
-  //   seeds: {
-  //     directory: "./data/seeds",
-  //   },
-  // },
+    migrations: {
+      directory: "./data/migrations",
+    },
+    seeds: {
+      directory: "./data/seeds",
+    },
+  },
 
   //   production: {
   //     client: "pg",
