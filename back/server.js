@@ -26,11 +26,15 @@ app.get("/", async (req, res) => {
 
 //原文表示
 app.get("/api/originaltext", async (req, res) => {
-  // res.setHeader("Content-Type", "application/json");
-  // res.set({ "Access-Control-Allow-Origin": "*" });
-  //CORSのアクセスコントロールをヘッダーに追加
-  const data = await db("originaltext").select("*");
-  res.status(200).json(data);
+  try {
+    // res.setHeader("Content-Type", "application/json");
+    // res.set({ "Access-Control-Allow-Origin": "*" });
+    //CORSのアクセスコントロールをヘッダーに追加
+    const data = await db("originaltext").select("*");
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 //コメント表示
