@@ -15,7 +15,7 @@ const OriginalText = () => {
     async function fetchData() {
       const response = await fetch("/api/originaltext");
       const json = await response.json();
-      console.log("とれてますぅ？", json);
+      console.log("とれてますぅ？", response);
       setData(json);
       setClick(true);
     }
