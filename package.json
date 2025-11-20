@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd front && npm install && npm run build && cp -r dist/* ../back/public/",
-    "start": "cd back && npm install && npm knex migrate:latest && npm knex seed:run && node server.js"
+    "start": "cd back && npm install && npx knex migrate:latest && npx knex seed:run && node server.js"
   },
   "repository": {
     "type": "git",
