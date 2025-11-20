@@ -19,7 +19,7 @@ module.exports = {
   },
 
   production: {
-    client: "postgres",
+    client: "pg",
     connection: {
       database:
         "postgresql://okawa:4XAuGtnKnCden1NfSMBKPASADNLoKtd8@dpg-d4emkivpm1nc738ua1v0-a/mydatabase_4755",
