@@ -21,7 +21,7 @@ app.listen(PORT, () => {
 app.get("/", async (req, res) => {
   // res.set({ "Access-Control-Allow-Origin": "*" });
   //CORSのアクセスコントロールをヘッダーに追加
-  res.send("つながりました");
+  res.json("つながりました");
 });
 
 //原文表示
@@ -30,7 +30,7 @@ app.get("/api/originaltext", async (req, res) => {
   // res.set({ "Access-Control-Allow-Origin": "*" });
   //CORSのアクセスコントロールをヘッダーに追加
   const data = await db("originaltext").select("*");
-  res.status(200).send(data);
+  res.status(200).json(data);
 });
 
 //コメント表示
