@@ -5,7 +5,7 @@ import PostComment from "./PostComment";
 import "./App.css";
 
 const OriginalText = () => {
-  const [data, setData] = useState(undefined);
+  const [data, setData] = useState({});
   const [clicked, setClick] = useState(false);
   const [selected, setSelected] = useState(false);
   const [comments, setComments] = useState([]);
