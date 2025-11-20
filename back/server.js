@@ -4,7 +4,7 @@ const app = express();
 //DEPLOYで変数PORT5432に、それがなければ３０００につなぐサーバのポート。REACTのポートは別
 const PORT = process.env.PORT || 3000;
 const db = require("./instanceKnexForExpress"); //KNEXインスタンスをひっぱってきた
-const productionDB = require("./instanceKnexForExpress");
+// const productionDB = require("./instanceKnexForExpress");
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
